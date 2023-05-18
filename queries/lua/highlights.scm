@@ -79,28 +79,43 @@
 ] @keyword.operator
 
 [
+  "="
+] @operator.assign
+
+[
+  ".."
+] @operator.concat
+
+[
+  "#"
+] @operator.misc
+
+[
   "+"
   "-"
   "*"
   "/"
   "%"
   "^"
-  "#"
+  "//"
+] @operator.arithmetic
+
+[
+  "&"
+  "~"
+  "|"
+  "<<"
+  ">>"
+] @operator.bitwise
+
+[
   "=="
   "~="
   "<="
   ">="
   "<"
   ">"
-  "="
-  "&"
-  "~"
-  "|"
-  "<<"
-  ">>"
-  "//"
-  ".."
-] @operator
+] @operator.relational
 
 ;; Punctuations
 

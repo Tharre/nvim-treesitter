@@ -51,47 +51,72 @@
 
 [
   "="
+] @operator.assign
 
-  "-"
-  "*"
-  "/"
+[
+  "+="
+  "-="
+  "*="
+  "/="
+  "%="
+  "--"
+  "++"
+  "^="
+  "|="
+  "&="
+  ">>="
+  "<<="
+] @operator.assign_combined
+
+(pointer_expression
+  operator: _ @operator.misc)
+
+;; pointer declaration like char *ptr
+(pointer_declarator
+  "*" @operator.misc)
+
+[
   "+"
+  "-"
+  "/"
   "%"
+] @operator.arithmetic
 
+;; special case multiplication (*) to differentiate from pointer (*)
+(binary_expression
+  operator: "*" @operator.arithmetic)
+
+[
   "~"
   "|"
-  "&"
   "^"
   "<<"
   ">>"
+] @operator.bitwise
 
+;; special case bitwise AND (&) to differentiate from take address (&)
+(binary_expression
+  operator: "&" @operator.bitwise)
+
+[
   "->"
   "."
+] @operator.selection
 
+[
   "<"
   "<="
   ">="
   ">"
   "=="
   "!="
+] @operator.relational
 
+[
   "!"
   "&&"
   "||"
-
-  "-="
-  "+="
-  "*="
-  "/="
-  "%="
-  "|="
-  "&="
-  "^="
-  ">>="
-  "<<="
-  "--"
-  "++"
-] @operator
+] @operator.logical
 
 ;; Make sure the comma operator is given a highlight group after the comma
 ;; punctuator so the operator is highlighted properly.

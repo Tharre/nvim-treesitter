@@ -49,44 +49,70 @@
 ; Operators
 
 [
-  "--"
-  "-"
-  "-="
-  ":="
-  "!"
-  "!="
-  "..."
-  "*"
-  "*"
-  "*="
-  "/"
-  "/="
-  "&"
-  "&&"
-  "&="
-  "%"
-  "%="
-  "^"
-  "^="
-  "+"
-  "++"
+  "=" @operator.assign
+  ":=" @operator.declaration
+]
+
+[
   "+="
-  "<-"
-  "<"
-  "<<"
-  "<<="
-  "<="
-  "="
-  "=="
-  ">"
-  ">="
-  ">>"
-  ">>="
-  "|"
+  "-="
+  "*="
+  "/="
+  "%="
+  "++"
+  "--"
+  "^="
   "|="
-  "||"
+  "&="
+  ">>="
+  "<<="
+] @operator.assign_combined
+
+[
+  "<-"
+  "..."
+] @operator.misc
+
+(unary_expression
+  operator: [ "*" "&" ] @operator.misc)
+
+[
+  "+" ;; TODO: can also be concat strings, we can't differentiate though, i.e. s := a + b
+  "-"
+  "/"
+  "%"
+] @operator.arithmetic
+
+;; special case multiplication (*) to differentiate from pointer (*)
+(binary_expression
+  operator: "*" @operator.arithmetic)
+
+[
   "~"
-] @operator
+  "|"
+  "^"
+  "<<"
+  ">>"
+] @operator.bitwise
+
+;; special case bitwise AND (&) to differentiate from take address (&)
+(binary_expression
+  operator: "&" @operator.bitwise)
+
+[
+  "<"
+  "<="
+  ">="
+  ">"
+  "=="
+  "!="
+] @operator.relational
+
+[
+  "!"
+  "&&"
+  "||"
+] @operator.logical
 
 ; Keywords
 

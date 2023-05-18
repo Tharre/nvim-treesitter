@@ -41,44 +41,68 @@
 
 ; Operators
 
+; TODO:
+; ":" ; pretty sure this is just part of a ternary, not an operator
+; "::" ; method reference, is that even an operator?
+
 [
-  "@"
-  "+"
-  ":"
-  "++"
-  "-"
-  "--"
-  "&"
-  "&&"
-  "|"
-  "||"
-  "!"
-  "!="
-  "=="
-  "*"
-  "/"
-  "%"
-  "<"
-  "<="
-  ">"
-  ">="
-  "="
-  "-="
+  "=" @operator.assign
+]
+
+[
   "+="
+  "-="
   "*="
   "/="
   "%="
-  "->"
-  "^"
+  "++"
+  "--"
   "^="
-  "&="
   "|="
-  "~"
+  "&="
+  ">>=" ;; missing entirely in original
+  ">>>=" ;; missing entirely in original
+  "<<=" ;; missing entirely in original
+] @operator.assign_combined
+
+[
+  "@"  ; annotation "operator"
+  "->" ; lambda arrow, not sure where else to put
+] @operator.misc
+
+[
+  "+" ;; TODO: can also be concat strings, we can't differentiate though, i.e. s = a + b
+  "-"
+  "*"
+  "/"
+  "%"
+] @operator.arithmetic
+
+[
+  "&"
+  "<<"
   ">>"
   ">>>"
-  "<<"
-  "::"
-] @operator
+  "^"
+  "|"
+  "~"
+] @operator.bitwise
+
+[
+  "!="
+  "<"
+  "<="
+  "=="
+  ">"
+  ">="
+] @operator.relational
+
+
+[
+  "!"
+  "&&"
+  "||"
+] @operator.logical
 
 ; Types
 

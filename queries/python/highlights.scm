@@ -174,44 +174,59 @@
 ; Tokens
 
 [
-  "-"
-  "-="
+  "="
   ":="
-  "!="
+] @operator.assign
+
+[
+  "+="
+  "-="
+  "*="
+  "**="
+  "/="
+  "//="
+  "%="
+  "@=" ; matrix mult
+  "^="
+  "&="
+  "<<="
+  ">>="
+  "|="
+] @operator.assign_combined
+
+[
+  "->"
+] @operator.misc
+
+[
+  "+"
+  "-"
   "*"
   "**"
-  "**="
-  "*="
   "/"
   "//"
-  "//="
-  "/="
-  "&"
-  "&="
   "%"
-  "%="
-  "^"
-  "^="
-  "+"
-  "+="
-  "<"
+  "@"
+] @operator.arithmetic
+
+[
+  "&"
   "<<"
-  "<<="
+  ">>"
+  "^"
+  "|"
+  "~"
+] @operator.bitwise
+
+[
+  "!="
+  "<"
   "<="
-  "<>"
-  "="
   "=="
   ">"
   ">="
-  ">>"
-  ">>="
-  "@"
-  "@="
-  "|"
-  "|="
-  "~"
-  "->"
-] @operator
+  "<>" ; !=, but not supported in python3 anymore?
+] @operator.relational
 
 ; Keywords
 [
